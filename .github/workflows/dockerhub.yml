@@ -49,13 +49,13 @@ jobs:
       - name: Build image and push database
         uses: docker/build-push-action@v3
         with:
-          context: database/Dockerfile
+          context: ./database
           tags: ${{secrets.DOCKERHUB_USERNAME}}/database-image:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build image and push httpd
         uses: docker/build-push-action@v3
         with:
-          context: http-server/Dockerfile
+          context: ./http-server
           tags: ${{secrets.DOCKERHUB_USERNAME}}/httpd-image:latest
           push: ${{ github.ref == 'refs/heads/main' }}
